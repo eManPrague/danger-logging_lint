@@ -22,12 +22,12 @@ module Danger
     # An attribute that you can read/write from your Dangerfile
     #
     # @return   [Array<String>]
-    attr_accessor :my_attribute
+    attr_accessor :log_levels
 
     # A method that you can call from your Dangerfile
     # @return   [Array<String>]
     #
-    def warn_on_mondays
+    def lint
       warn "Trying to merge code on a Monday" if Date.today.wday == 1
     end
   end

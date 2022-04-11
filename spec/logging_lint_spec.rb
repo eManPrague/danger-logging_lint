@@ -9,38 +9,37 @@ module Danger
     end
 
     #
-    # You should test your custom attributes and methods here
+    # Defines linter, danger file and other variables used by the linter.
     #
     describe "with Dangerfile" do
       before do
         @dangerfile = testing_dangerfile
-        @my_plugin = @dangerfile.logging_lint
+        @logging_lint = @dangerfile.logging_lint
 
-        # mock the PR data
-        # you can then use this, eg. github.pr_author, later in the spec
-        json = File.read("#{File.dirname(__FILE__)}/fixtures/github_pr.json") # example json: `curl https://api.github.com/repos/danger/danger-plugin-template/pulls/18 > github_pr.json`
-        allow(@my_plugin.github).to receive(:pr_json).and_return(json)
+        modified_files = [File.read("#{File.dirname(__FILE__)}/fixtures/ModifiedFile.kt")]
+        added_files = [File.read("#{File.dirname(__FILE__)}/fixtures/NewFile.kt")]
+
+        allow(@logging_lint.git).to receive(:deleted_files).and_return([])
+        allow(@logging_lint.git).to receive(:added_files).and_return(added_files)
+        allow(@logging_lint.git).to receive(:modified_files).and_return(modified_files)
       end
 
-      # Some examples for writing tests
-      # You should replace these with your own.
+      # Tests for logging in Kotlin files.
 
-      it "Warns on a monday" do
-        monday_date = Date.parse("2016-07-11")
-        allow(Date).to receive(:today).and_return monday_date
-
-        @my_plugin.warn_on_mondays
-
-        expect(@dangerfile.status_report[:warnings]).to eq(["Trying to merge code on a Monday"])
-      end
-
-      it "Does nothing on a tuesday" do
-        monday_date = Date.parse("2016-07-12")
-        allow(Date).to receive(:today).and_return monday_date
-
-        @my_plugin.warn_on_mondays
-
+      it "Nothing is printed when log levels are missing" do
+        allow(@logging_lint.git).to receive(:log_levels).and_return([])
+        @logging_lint.lint
         expect(@dangerfile.status_report[:warnings]).to eq([])
+      end
+
+      it "Log with variables is warned" do
+        allow(@logging_lint.git).to receive(:log_levels).and_return(["logInfo"])
+        @logging_lint.lint
+        warnings = @dangerfile.status_report[:warnings]
+        expect(warnings.size).to eq(12)
+        warnings.each do |warning|
+          expect(warning).to eq("Does this log comply with security rules?")
+        end
       end
     end
   end
