@@ -3,72 +3,76 @@ package cz.eman.logging.lint
 class NewFile {
 
     fun runLogDebug() {
-        logDebug { "Log debug" }
-        logDebug("Log debug")
-        logDebug { "Log debug $var" }
-        logDebug("Log debug $var")
+        "Text to ignore new $ignoredVar"
+
+        logDebug { "Log debug new" }
+        logDebug("Log debug new")
+        logDebug { "Log debug new $var" }
+        logDebug("Log debug new $var")
         logDebug {
-            "Log debug"
+            "Log debug new"
         }
         logDebug(
-            "Log debug"
+            "Log debug new"
         )
         logDebug {
-            "Log debug $var"
+            "Log debug new $var"
         }
         logDebug(
-            "Log debug $var"
+            "Log debug new $var"
         )
         logDebug {
-            "Log debug"
-            +"Second line"
+            "Log debug new"
+            +"Second line new"
         }
         logDebug(
-            "Log debug"
-                    + "Second line"
+            "Log debug new"
+                    + "Second line new"
         )
         logDebug {
-            "Log debug"
-            +"Second line $var"
+            "Log debug new"
+            +"Second line new $var"
         }
         logDebug(
-            "Log debug"
-                    + "Second line $var"
+            "Log debug new"
+                    + "Second line new $var"
         )
     }
 
     fun runLogInfo() {
-        logInfo { "Log debug" }
-        logInfo("Log debug")
-        logInfo { "Log debug $var" }
-        logInfo("Log debug $var")
+        "Text to ignore modified $ignoredVar"
+
+        logInfo { "Log info new" }
+        logInfo("Log info new")
+        logInfo { "Log info new $var" }
+        logInfo("Log info new $var")
         logInfo {
-            "Log debug"
+            "Log info new"
         }
         logInfo(
-            "Log debug"
+            "Log info new"
         )
         logInfo {
-            "Log debug $var"
+            "Log info new $var"
         }
         logInfo(
-            "Log debug $var"
+            "Log info new $var"
         )
         logInfo {
-            "Log debug"
-            +"Second line"
+            "Log info new"
+            +"Second line new"
         }
         logInfo(
-            "Log debug"
-                    + "Second line"
+            "Log info new"
+                    + "Second line new"
         )
         logInfo {
-            "Log debug"
-            +"Second line $var"
+            "Log info new"
+            +"Second line new $var"
         }
         logInfo(
-            "Log debug"
-                    + "Second line $var"
+            "Log info new"
+                    + "Second line new $var"
         )
     }
 }
