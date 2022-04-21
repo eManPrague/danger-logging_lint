@@ -2,6 +2,8 @@
 
 ### Version 0.0.3 (TBD)
 
+- Added deployment to Readme.
+
 ### Version 0.0.2 (2022-04-21)
 
 - Updated `gemspec` (gem) documentation.

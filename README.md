@@ -72,3 +72,9 @@ If all of these checks pass then it will trigger linter on target files (filtere
 3. Run `bundle exec rake spec` to run the tests.
 4. Use `bundle exec guard` to automatically have tests run as you make changes.
 5. Make your changes.
+
+## Deployment
+
+1. Make sure you increased version in /lib/logging_lint/gem_version.rb
+2. Run command `gem build danger-logging_lint` which should create file `danger-logging_lint-VERSION.gem`
+3. Deploy to [RubyGems](https://rubygems.org/) using command `gem push danger-logging_lint-VERSION.gem`.
