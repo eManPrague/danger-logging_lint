@@ -2,6 +2,7 @@
 
 ### Version 0.0.3 (TBD)
 
+- Added deploy and test yaml for github workflow.
 - Added deployment to Readme.
 - Remove "Check: " hardcoded ext from warning message.
 
