@@ -8,7 +8,7 @@ class ModifiedFile {
         logDebug { "Log debug modified" }
         logDebug("Log debug modified")
         logDebug { "Log debug modified $var" }
-        logDebug("TEST Log debug modified $var")
+        logDebug("Log debug modified $var")
         logDebug {
             "Log debug modified"
         }
@@ -30,7 +30,7 @@ class ModifiedFile {
                     + "Second line modified"
         )
         logDebug {
-            "TEST Log debug modified"
+            "Log debug modified"
             +"Second line modified debug $var"
         }
         logDebug(
@@ -60,7 +60,7 @@ class ModifiedFile {
 
         logInfo { "Log info modified" }
         logInfo("Log info modified")
-        logInfo { "TEST Log info modified $var" }
+        logInfo { "Log info modified $var" }
         logInfo("Log info modified $var")
         logInfo {
             "Log info modified"
@@ -91,7 +91,7 @@ class ModifiedFile {
                     + "Second line modified info $var"
         )
         logInfo(
-            "TEST Log debug modifies"
+            "Log debug modifies"
                  + message
                  + "another line"
         )
