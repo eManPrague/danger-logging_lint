@@ -291,7 +291,7 @@ module Danger
     def compose_warning_text(warning_text)
       return warning_text if warning_description.nil?
 
-      "#{warning_text} Check: #{warning_description}"
+      "#{warning_text} #{warning_description}"
     end
   end
 end

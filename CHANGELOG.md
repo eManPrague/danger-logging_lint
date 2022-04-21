@@ -3,6 +3,7 @@
 ### Version 0.0.3 (TBD)
 
 - Added deployment to Readme.
+- Remove "Check: " hardcoded ext from warning message.
 
 ### Version 0.0.2 (2022-04-21)
 
