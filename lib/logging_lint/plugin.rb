@@ -230,7 +230,7 @@ module Danger
             if contains_variable(c)
               char_index = $~.offset(0)[0] + line_offset(c)
               line_index = raw_file[0..char_index].lines.count
-              warn(compose_warning_text(warning_text), true, filename, line_index)
+              warn(compose_warning_text(warning_text), file: filename, line: line_index)
             end
           end
         end

@@ -118,13 +118,8 @@ module Danger
       # Compares violation lines against danger warning lines. It expects them to be equal.
       #
       def compare_warning_with_lines(violation_lines)
-        warnings = @dangerfile.status_report[:warnings]
-        warning_lines = []
-        warnings.each_with_index do |value, index|
-          if index > 0 && (index + 1) % 4 == 0
-            warning_lines << value
-          end
-        end
+        warnings = @dangerfile.violation_report[:warnings]
+        warning_lines = warnings.map(&:line)
         expect(warning_lines).to eq(violation_lines)
       end
     end
