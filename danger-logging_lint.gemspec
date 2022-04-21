@@ -10,9 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["David Sucharda"]
   spec.email         = ["david.sucharda@eman.cz"]
   spec.description   = "Checks logging commands in code."
-  spec.summary       = "Logging might be a security issue when done in production. This plugin
-  checks files for new/changed logs that might be a security issue and creates issues for them."
-  # TODO: change homepage
+  spec.summary       = "Logging might be a security issue that is why this plugin checks files for new/changed logs with variables that might be a security issue and warns them using Danger."
   spec.homepage      = "https://github.com/eManPrague/danger-logging_lint"
   spec.license       = "MIT"
 
