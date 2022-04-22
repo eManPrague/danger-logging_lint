@@ -77,6 +77,4 @@ If all of these checks pass then it will trigger linter on target files (filtere
 
 ## Deployment
 
-1. Make sure you increased version in /lib/logging_lint/gem_version.rb
-2. Run command `gem build danger-logging_lint` which should create file `danger-logging_lint-VERSION.gem`
-3. Deploy to [RubyGems](https://rubygems.org/) using command `gem push danger-logging_lint-VERSION.gem`.
+Gem is deployed manually from master branch using [Github Action](https://github.com/eManPrague/danger-logging_lint/actions/workflows/deploy.yml). Make sure you increased the gem version before triggering it.
