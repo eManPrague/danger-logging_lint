@@ -26,6 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
 
   # Testing support
+  spec.add_development_dependency 'codecov', '~> 0.5.1'
   spec.add_development_dependency "rspec", "~> 3.4"
 
   # Linting code and docs
