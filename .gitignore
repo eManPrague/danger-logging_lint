@@ -2,3 +2,7 @@
 pkg
 .idea/
 .yardoc
+
+coverage/
+.coverage
+coverage.xml
