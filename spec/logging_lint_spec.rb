@@ -105,7 +105,7 @@ module Danger
         allow(@logging_lint.git).to receive(:added_files).and_return(added_files)
         allow(@logging_lint).to receive(:warning_description).and_return(warning_link)
         @logging_lint.log_lint
-        expect(@dangerfile.status_report[:warnings][0]).to eq("#{warning_text} Check: #{warning_link}")
+        expect(@dangerfile.status_report[:warnings][0]).to eq("#{warning_text} #{warning_link}")
       end
 
       it "Log with variables is warned without link address" do
