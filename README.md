@@ -1,4 +1,6 @@
-## logging_lint
+## Logging Lint
+[![Gem Version](https://badge.fury.io/rb/danger-logging_lint.svg)](https://badge.fury.io/rb/danger-logging_lint) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/eManPrague/danger-logging_lint/blob/master/LICENSE.txt) [![Test](https://github.com/eManPrague/danger-logging_lint/actions/workflows/test.yml/badge.svg)](https://github.com/eManPrague/danger-logging_lint/actions/workflows/test.yml) [![codecov](https://codecov.io/gh/eManPrague/danger-logging_lint/branch/master/graph/badge.svg?token=Z2RZKYNBVI)](https://codecov.io/gh/eManPrague/danger-logging_lint)
+
 
 This danger plugin can be used to check log lines in modified (added) files. It heavily relies on regex configuration which can be modified to search all kinds of parts of code in the files. Default configuration is set to support [Kotlin eMan Logger Library](https://github.com/eManPrague/logger-ktx). Ex: logInfo { "Info message $var" }.
 
@@ -75,6 +77,4 @@ If all of these checks pass then it will trigger linter on target files (filtere
 
 ## Deployment
 
-1. Make sure you increased version in /lib/logging_lint/gem_version.rb
-2. Run command `gem build danger-logging_lint` which should create file `danger-logging_lint-VERSION.gem`
-3. Deploy to [RubyGems](https://rubygems.org/) using command `gem push danger-logging_lint-VERSION.gem`.
+Gem is deployed manually from master branch using [Github Action](https://github.com/eManPrague/danger-logging_lint/actions/workflows/deploy.yml). Make sure you increased the gem version before triggering it.
