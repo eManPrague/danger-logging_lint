@@ -1,5 +1,5 @@
 ## Logging Lint
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+[![Gem Version](https://badge.fury.io/rb/danger-logging_lint.svg)](https://badge.fury.io/rb/danger-logging_lint) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/eManPrague/danger-logging_lint/blob/master/LICENSE.txt) [![Test](https://github.com/eManPrague/danger-logging_lint/actions/workflows/test.yml/badge.svg)](https://github.com/eManPrague/danger-logging_lint/actions/workflows/test.yml) [![codecov](https://codecov.io/gh/eManPrague/danger-logging_lint/branch/master/graph/badge.svg?token=Z2RZKYNBVI)](https://codecov.io/gh/eManPrague/danger-logging_lint)
 
 
 This danger plugin can be used to check log lines in modified (added) files. It heavily relies on regex configuration which can be modified to search all kinds of parts of code in the files. Default configuration is set to support [Kotlin eMan Logger Library](https://github.com/eManPrague/logger-ktx). Ex: logInfo { "Info message $var" }.
