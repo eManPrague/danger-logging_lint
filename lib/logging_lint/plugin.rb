@@ -200,6 +200,7 @@ module Danger
       end
 
       target_files = (git.modified_files - git.deleted_files) + git.added_files
+      target_files = target_files.reject { |filename| File.directory?(filename) }
       if !file_extensions.nil? && file_extensions.size >= 0
         file_extensions_regex = "(.#{file_extensions.join('|.')})"
         target_files = target_files.grep(/#{file_extensions_regex}/)
@@ -224,6 +225,8 @@ module Danger
     def check_files(files)
       raw_file = ""
       files.each do |filename|
+        next if File.directory?(filename)
+
         raw_file = File.read(filename)
         log_functions.each do |log_function|
           raw_file.scan(/#{log_function}#{log_regex}/m) do |c|

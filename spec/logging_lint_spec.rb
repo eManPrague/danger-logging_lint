@@ -48,6 +48,13 @@ module Danger
         expect(@dangerfile.status_report[:errors]).to eq([])
       end
 
+      it "Nothing is printed when there are folders to check" do
+        allow(@logging_lint).to receive(:file_extensions).and_return([])
+        allow(@logging_lint.git).to receive(:modified_files).and_return(%W(#{dir_name}))
+        @logging_lint.log_lint
+        expect(@dangerfile.status_report[:errors]).to eq([])
+      end
+
       it "Nothing is printed when there are no files to check (filtered by extensions)" do
         allow(@logging_lint.git).to receive(:modified_files).and_return(modified_files)
         allow(@logging_lint).to receive(:file_extensions).and_return(%w(unknownExtension))

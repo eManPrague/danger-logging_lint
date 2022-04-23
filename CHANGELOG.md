@@ -2,6 +2,8 @@
 
 ### Version 0.0.4 (TBD)
 
+- Fixed crash when changed file is a directory (filters them out).
+
 ### Version 0.0.3 (2022-04-22)
 
 - Added deploy and test yaml for github workflow.
