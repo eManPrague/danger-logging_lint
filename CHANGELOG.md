@@ -3,6 +3,10 @@
 ### Version 0.0.4 (TBD)
 
 - Fixed crash when changed file is a directory (filters them out).
+- Fixed crash when opening missing file (filters them out).
+- Split rspec into multiple files.
+- Added tests for linter with all variables set using Danger file.
+- Variables used in multiple tests are defined as constants in `spec_helper.rb`.
 
 ### Version 0.0.3 (2022-04-22)
 
