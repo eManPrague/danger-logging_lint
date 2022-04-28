@@ -191,12 +191,12 @@ module Danger
     #
     def log_lint
       if log_functions.nil? || log_functions.size <= 0
-        self.fail("No log functions are defined. Please check your Danger file.")
+        self.fail("Logging lint: No log functions are defined. Please check your Danger file.")
         return
       end
 
       if line_variable_regex.nil? || line_variable_regex.size <= 0
-        message("At least one variable index must be defined (using default). Please check your Danger file.")
+        message("Logging lint: At least one variable index must be defined (using default). Please check your Danger file.")
       end
 
       target_files = (git.modified_files - git.deleted_files) + git.added_files
@@ -207,7 +207,7 @@ module Danger
       end
 
       if target_files.empty?
-        message("No files to check.")
+        message("Logging lint: No files to check.")
         return
       end
 
