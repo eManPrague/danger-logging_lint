@@ -191,27 +191,39 @@ module Danger
     #
     def log_lint
       if log_functions.nil? || log_functions.size <= 0
-        self.fail("No log functions are defined. Please check your Danger file.")
+        self.fail("Logging lint: No log functions are defined. Please check your Danger file.")
         return
       end
 
       if line_variable_regex.nil? || line_variable_regex.size <= 0
-        message("At least one variable index must be defined (using default). Please check your Danger file.")
+        message("Logging lint: At least one variable index must be defined (using default). Please check your Danger file.")
       end
 
       target_files = (git.modified_files - git.deleted_files) + git.added_files
-      target_files = target_files.reject { |filename| File.directory?(filename) }
+      target_files = target_files.reject { |filename| invalid_file?(filename) }
       if !file_extensions.nil? && file_extensions.size >= 0
         file_extensions_regex = "(.#{file_extensions.join('|.')})"
         target_files = target_files.grep(/#{file_extensions_regex}/)
       end
 
       if target_files.empty?
-        message("No files to check.")
+        message("Logging lint: No files to check.")
         return
       end
 
       check_files(target_files)
+    end
+
+    #
+    # Checks if file is not valid. It will not be valid in two cases:
+    # 1) Files is a directory.
+    # 2) Files does not exist.
+    # In both cases we cannot open it and lint it. There is also no reason to lint them.
+    #
+    # @return [Boolean] true if invalid file
+    #
+    def invalid_file?(filename)
+      File.directory?(filename) || !File.exist?(filename)
     end
 
     #
@@ -225,7 +237,7 @@ module Danger
     def check_files(files)
       raw_file = ""
       files.each do |filename|
-        next if File.directory?(filename)
+        next if invalid_file?(filename)
 
         raw_file = File.read(filename)
         log_functions.each do |log_function|

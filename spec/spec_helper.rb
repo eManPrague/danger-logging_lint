@@ -71,3 +71,22 @@ def testing_dangerfile
   env = Danger::EnvironmentManager.new(testing_env)
   Danger::Dangerfile.new(env, testing_ui)
 end
+
+# Mocks linter variables. Should be called in "before" block.
+def mock_variables(logging_lint)
+  allow(logging_lint.git).to receive(:deleted_files).and_return([])
+  allow(logging_lint.git).to receive(:added_files).and_return([])
+  allow(logging_lint.git).to receive(:modified_files).and_return([])
+  allow(logging_lint).to receive(:file_extensions).and_return(%w(kt))
+  allow(logging_lint).to receive(:log_functions).and_call_original
+  allow(logging_lint).to receive(:warning_text).and_call_original
+  allow(logging_lint).to receive(:log_regex).and_call_original
+  allow(logging_lint).to receive(:line_variable_regex).and_call_original
+  allow(logging_lint).to receive(:line_remove_regex).and_call_original
+end
+
+# Defines test variables used in multiple text files.
+DIR_NAME = File.dirname(__FILE__)
+MODIFIED_FILES = %W(#{DIR_NAME}/fixtures/ModifiedFile.kt #{DIR_NAME}/fixtures/IgnoredModifiedFile.txt).freeze
+ADDED_FILES = %W(#{DIR_NAME}/fixtures/NewFile.kt).freeze
+WARNING_TEXT = "Does this log comply with security rules?"
