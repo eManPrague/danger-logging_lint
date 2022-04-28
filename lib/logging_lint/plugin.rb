@@ -200,7 +200,7 @@ module Danger
       end
 
       target_files = (git.modified_files - git.deleted_files) + git.added_files
-      target_files = target_files.reject { |filename| File.directory?(filename) }
+      target_files = target_files.reject { |filename| invalid_file?(filename) }
       if !file_extensions.nil? && file_extensions.size >= 0
         file_extensions_regex = "(.#{file_extensions.join('|.')})"
         target_files = target_files.grep(/#{file_extensions_regex}/)
@@ -215,6 +215,18 @@ module Danger
     end
 
     #
+    # Checks if file is not valid. It will not be valid in two cases:
+    # 1) Files is a directory.
+    # 2) Files does not exist.
+    # In both cases we cannot open it and lint it. There is also no reason to lint them.
+    #
+    # @return [Boolean] true if invalid file
+    #
+    def invalid_file?(filename)
+      File.directory?(filename) || !File.exist?(filename)
+    end
+
+    #
     # Checks all files for log violations based on log regex and log function. Each log function id extended by log
     # regex and searched for (format: #log_function#log_regex). Each of such found line is then checked if it contains a
     # variable. If it does it is warned with a specific line index and warning text. Uses Danger warn level with sticky
@@ -225,7 +237,7 @@ module Danger
     def check_files(files)
       raw_file = ""
       files.each do |filename|
-        next if File.directory?(filename)
+        next if invalid_file?(filename)
 
         raw_file = File.read(filename)
         log_functions.each do |log_function|

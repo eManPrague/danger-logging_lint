@@ -63,6 +63,13 @@ module Danger
         compare_warning_with_lines(violation_lines)
       end
 
+      it "Log with variables is warned for modified files without crashing due to missing files" do
+        allow(@logging_lint.git).to receive(:modified_files).and_return(MODIFIED_FILES + %W(#{DIR_NAME}/fixtures/MissingFile.kt))
+        @logging_lint.log_lint
+        violation_lines = [63, 64, 73, 76, 88, 92, 97, 98, 101, 106, 107, 110]
+        compare_warning_with_lines(violation_lines)
+      end
+
       it "Log with variables is warned for new files" do
         allow(@logging_lint.git).to receive(:added_files).and_return(ADDED_FILES)
         @logging_lint.log_lint
