@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    danger-logging_lint (0.0.4)
+    danger-logging_lint (0.0.5)
       danger-plugin-api (~> 1.0)
 
 GEM

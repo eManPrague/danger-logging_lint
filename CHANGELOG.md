@@ -1,5 +1,7 @@
 ## Changelog
 
+### Version 0.0.5 (TBD)
+
 ### Version 0.0.4 (2022-04-28)
 
 - Fixed crash when changed file is a directory (filters them out).
